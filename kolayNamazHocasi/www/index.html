@@ -9,20 +9,27 @@
     <link rel="apple-touch-icon" href="img/appIcon.png">
 
     <!--jquery-->
-    <script src="scripts/jquery/jquery-1.11.3.min.js"></script>
-    <script src="scripts/jquery/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jquery/ui/jquery-ui.min-1.11.4.js"></script>
+    <script src="js/jquery/jquery.min-2.1.4.js"></script>
+    <!--jquery mobile-->
+    <script src="js/jquery/jquery.mobile-1.4.5.min.js"></script>
     <link rel="stylesheet" href="css/jquery/jquery.mobile-1.4.5.min.css">
-
+    <!--iscroll-->
+    <script type="text/javascript" src="js/iscroll/iscroll.js"></script>
+    <link rel="stylesheet" href="css/iscroll/iscrollCustom.css">
+    <!--nativedroid theme-->
+    <script type="text/javascript" src="js/nativeDroid2Theme/nativedroid2.js"></script>
+    <script type="text/javascript" src="js/nativeDroid2Theme/vendor/waves/waves.min.js"></script>
+    <script type="text/javascript" src="js/nativeDroid2Theme/vendor/wow/wow.min.js"></script>
+    <link rel="stylesheet" href="css/nativeDroid2Theme/nativedroid2.css">
+    <link rel="stylesheet" href="css/nativeDroid2Theme/font-awesome.min.css">
+    <link rel="stylesheet" href="css/nativeDroid2Theme/vendor/waves/waves.min.css">
+    <link rel="stylesheet" href="css/nativeDroid2Theme/vendor/wow/animate.css">
     <!--genel css-->
     <link rel="stylesheet" href="css/style.mobile.css" />
     <link rel="stylesheet" href="css/style.css">
 
-    <!--iscroll-->
-    <link rel="stylesheet" href="css/iscroll/iscrollCustom.css">
-    <script type="text/javascript" src="scripts/iscroll/iscroll.js"></script>
-
     <script type="text/javascript" src="cordova.js"></script>
-
     <!--admob-->
     <script>
         (function () {
@@ -36,127 +43,101 @@
         })();
     </script>
 </head>
-<body>
+<body class="clr-accent-lime">
     <!--admob-->
-    <script>
-        // place our admob ad unit id here
-        var admobid = {};
-        if (/(android)/i.test(navigator.userAgent)) {
-            admobid = { // for Android
-                banner: 'ca-app-pub-6022968583924753/6010156627'
-            };
-        } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
-            admobid = { // for iOS
-                banner: 'ca-app-pub-6022968583924753/1440356223'
-            };
-        } else {
-            admobid = { // for Windows Phone
-                banner: 'ca-app-pub-6869992474017983/8878394753'
-            };
-        }
+    <script src="js/admobOptions.js"></script>
 
-        function onDeviceReady() {
-            if (!AdMob) { alert('admob plugin not ready'); return; }
-
-            initAd();
-
-            // display a banner at startup
-            createSelectedBanner();
-        }
-
-        function initAd() {
-            AdMob.setOptions({
-                // width: integer, // valid when set adSize 'CUSTOM'
-                // height: integer, // valid when set adSize 'CUSTOM'
-                position: AdMob.AD_POSITION.BOTTOM_CENTER,
-                // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
-                bgColor: 'black', // color name, or '#RRGGBB'
-                // x: integer,    // valid when set position to 0 / POS_XY
-                // y: integer,    // valid when set position to 0 / POS_XY
-                isTesting: false, // set to true, to receiving test ad for testing purpose
-                // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
-            });
-
-            // new events, with variable to differentiate: adNetwork, adType, adEvent
-            $(document).on('onAdFailLoad', function (data) {
-                //alert('error: ' + data.error +
-                //    ', reason: ' + data.reason +
-                //    ', adNetwork:' + data.adNetwork +
-                //    ', adType:' + data.adType +
-                //    ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
-            });
-            $(document).on('onAdLoaded', function (data) { });
-            $(document).on('onAdPresent', function (data) { });
-            $(document).on('onAdLeaveApp', function (data) { });
-            $(document).on('onAdDismiss', function (data) { });
-
-            function createSelectedBanner() {
-                AdMob.createBanner({
-                    adId: admobid.banner
-                });
-            }
-
-            // create a banner on startup
-            createSelectedBanner();
-
-            $(document).on('backbutton', function () {
-                if (window.confirm('Uygulamadan çıkmak istediğinize emin misiniz?')) navigator.app.exitApp();
-            });
-
-            $(document).on('resume', function () {
-                AdMob.showInterstitial(); //BURAYI KONTROL ET
-            });
-        }
-
-        $(document).ready(function () {
-            // on mobile device, we must wait the 'deviceready' event fired by cordova
-            if (/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent)) {
-                document.addEventListener('deviceready', onDeviceReady, false);
-            } else {
-                //onDeviceReady();
-            }
-        });
-
-    </script>
-
-    <div data-role="page" data-theme="a">
-        <div data-role="header" data-theme="b">
-            <h1 style="font-size:13px">KOLAY NAMAZ HOCASI</h1>
+    <div data-role="page" class="nd2-no-menu-swipe">
+        <div data-role="header" data-position="fixed" class="wow fadeIn">
+            <h1 class="wow fadeIn" data-wow-delay='0.4s'>KOLAY NAMAZ HOCASI</h1>
+            <ul data-role="nd2tabs" data-swipe="true">
+                <li data-tab="tabAbdest" data-tab-active="true">ABDEST</li>
+                <li data-tab="tabNamaz" >NAMAZ</li>
+                <li data-tab="tabDualar">DUALAR</li>
+            </ul>
         </div>
-        <div data-role="content">
-            <div data-role="tabs" id="tabs">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#tabAbdest" data-ajax="false" class="ui-btn-active">ABDEST</a></li>
-                        <li><a href="#tabNamaz" data-ajax="false">NAMAZ</a></li>
-                        <li><a href="#tabDualar" data-ajax="false">DUALAR</a></li>
-                    </ul>
-                </div>
-                <div id="tabAbdest">
-                    <ul data-role="listview" data-inset="true">
-                        <li><a href="#">Acura</a></li>
-                        <li><a href="#">Audi</a></li>
-                        <li><a href="#">BMW</a></li>
-                        <li><a href="#">Cadillac</a></li>
-                        <li><a href="#">Ferrari</a></li>
-                    </ul>
-                </div>
-                <div id="tabNamaz">
+        <div role="main" class="ui-content wow fadeIn" data-inset="false" data-wow-delay="0.2s">
+            <div data-role="nd2tab" data-tab="tabAbdest">
+                <div>
+                <ul data-role="listview" data-icon="false">
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Resimli Abdest</h2>
+                            <p>Abdest nasıl alınır?</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Gusül Abdesti</h2>
+                            <p>Gusül abdesti nasıl alınır?</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Teyemmüm</h2>
+                            <p>Teyemmüm nasıl alınır?</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Abdesti Bozan Durumlar</h2>
+                            <p>Abdesti bozan durumlar nelerdir?</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Abdest Duaları</h2>
+                            <p>Abdest duaları nelerdir?</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Abdest Duaları</h2>
+                            <p>Abdest duaları nelerdir?</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Abdest Duaları</h2>
+                            <p>Abdest duaları nelerdir?</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Abdest Duaları</h2>
+                            <p>Abdest duaları nelerdir?</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
+                            <h2>Abdest Duaları</h2>
+                            <p>Abdest duaları nelerdir?</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div data-role="nd2tab" data-tab="tabNamaz">
+                <ul data-role="listview" data-icon="false">
 
-                </div>
-                <div id="tabDualar">
-
-                </div>
+                </ul>
+            </div>
+            <div data-role="nd2tab" data-tab="tabDualar">
             </div>
         </div>
     </div>
 
-    <div data-role="page" id="testPage">
-
-    </div>
     <!--script-->
-    <script src="scripts/commonMethods.js"></script>
-    <script src="scripts/pageEvents.js"></script>
+    <script src="js/commonMethods.js"></script>
+    <script src="js/pageEvents.js"></script>
 
     <script>
         $(document).ready(function () {
