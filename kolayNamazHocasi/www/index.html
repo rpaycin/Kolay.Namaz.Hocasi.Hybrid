@@ -1,22 +1,21 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Kolay Namaz Hocası</title>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Kolay Namaz Hocasi">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="apple-touch-icon" href="img/appIcon.png">
 
     <!--jquery-->
-    <script src="js/jquery/ui/jquery-ui.min-1.11.4.js"></script>
     <script src="js/jquery/jquery.min-2.1.4.js"></script>
+    <script src="js/jquery/ui/jquery-ui.min-1.11.4.js"></script>
     <!--jquery mobile-->
     <script src="js/jquery/jquery.mobile-1.4.5.min.js"></script>
     <link rel="stylesheet" href="css/jquery/jquery.mobile-1.4.5.min.css">
-    <!--iscroll-->
-    <script type="text/javascript" src="js/iscroll/iscroll.js"></script>
-    <link rel="stylesheet" href="css/iscroll/iscrollCustom.css">
     <!--nativedroid theme-->
     <script type="text/javascript" src="js/nativeDroid2Theme/nativedroid2.js"></script>
     <script type="text/javascript" src="js/nativeDroid2Theme/vendor/waves/waves.min.js"></script>
@@ -25,9 +24,6 @@
     <link rel="stylesheet" href="css/nativeDroid2Theme/font-awesome.min.css">
     <link rel="stylesheet" href="css/nativeDroid2Theme/vendor/waves/waves.min.css">
     <link rel="stylesheet" href="css/nativeDroid2Theme/vendor/wow/animate.css">
-    <!--genel css-->
-    <link rel="stylesheet" href="css/style.mobile.css" />
-    <link rel="stylesheet" href="css/style.css">
 
     <script type="text/javascript" src="cordova.js"></script>
     <!--admob-->
@@ -43,106 +39,28 @@
         })();
     </script>
 </head>
-<body class="clr-accent-lime">
+<body>
     <!--admob-->
     <script src="js/admobOptions.js"></script>
 
-    <div data-role="page" class="nd2-no-menu-swipe">
-        <div data-role="header" data-position="fixed" class="wow fadeIn">
-            <h1 class="wow fadeIn" data-wow-delay='0.4s'>KOLAY NAMAZ HOCASI</h1>
-            <ul data-role="nd2tabs" data-swipe="true">
-                <li data-tab="tabAbdest" data-tab-active="true">ABDEST</li>
-                <li data-tab="tabNamaz" >NAMAZ</li>
-                <li data-tab="tabDualar">DUALAR</li>
-            </ul>
+    <!--body-->
+    <div data-role="page">
+        <nd2-include data-src="views/leftMenu.html"></nd2-include>
+        <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+            <nd2-include data-src="views/bottomMenu.html"></nd2-include>
         </div>
-        <div role="main" class="ui-content wow fadeIn" data-inset="false" data-wow-delay="0.2s">
-            <div data-role="nd2tab" data-tab="tabAbdest">
-                <div>
-                <ul data-role="listview" data-icon="false">
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Resimli Abdest</h2>
-                            <p>Abdest nasıl alınır?</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Gusül Abdesti</h2>
-                            <p>Gusül abdesti nasıl alınır?</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Teyemmüm</h2>
-                            <p>Teyemmüm nasıl alınır?</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Abdesti Bozan Durumlar</h2>
-                            <p>Abdesti bozan durumlar nelerdir?</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Abdest Duaları</h2>
-                            <p>Abdest duaları nelerdir?</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Abdest Duaları</h2>
-                            <p>Abdest duaları nelerdir?</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Abdest Duaları</h2>
-                            <p>Abdest duaları nelerdir?</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Abdest Duaları</h2>
-                            <p>Abdest duaları nelerdir?</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-                            <h2>Abdest Duaları</h2>
-                            <p>Abdest duaları nelerdir?</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div data-role="nd2tab" data-tab="tabNamaz">
-                <ul data-role="listview" data-icon="false">
-
-                </ul>
-            </div>
-            <div data-role="nd2tab" data-tab="tabDualar">
-            </div>
+        <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+            <a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-more-vert"></i></a>
+            <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+            <h1 class="wow fadeIn" data-wow-delay='0.4s'>Kolay Namaz Hocası</h1>
+        </div>
+        <div role="main" class="ui-content" data-inset="false">
+            <p>(home)</p>
         </div>
     </div>
 
     <!--script-->
     <script src="js/commonMethods.js"></script>
     <script src="js/pageEvents.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $("#testPage").load("testPage.html");
-        });
-    </script>
 </body>
 </html>
